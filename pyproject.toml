@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "zodchy-patterns"
-version = "0.1.1"
+version = "0.1.2"
 description = "Collection of patterns to use in CQRS applications"
 authors = ["Smairon <man@smairon.ru>"]
 readme = "README.md"
