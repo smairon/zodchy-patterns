@@ -1,28 +1,16 @@
 import collections.abc
 import dataclasses
-from zodchy import codex
+
+from .generic import HttpEvent
 
 
 @dataclasses.dataclass
-class HTTPResponseEvent(codex.ResponseEvent):
-    def get_content(self) -> dict:
-        data = dataclasses.asdict(self)
-        return {
-            'data': data or None
-        }
-
-    def get_status_code(self) -> int:
-        return 200
+class HttpInfo(HttpEvent):
+    pass
 
 
 @dataclasses.dataclass
-class ErrorResponseEvent(HTTPResponseEvent):
-    def get_status_code(self) -> int:
-        return 500
-
-
-@dataclasses.dataclass
-class CreatedResponseEvent(HTTPResponseEvent):
+class HttpCreatedInfo(HttpInfo):
     def get_content(self) -> dict:
         data = dataclasses.asdict(self)
         return {'data': data} if data else None
@@ -32,7 +20,7 @@ class CreatedResponseEvent(HTTPResponseEvent):
 
 
 @dataclasses.dataclass
-class ItemResponseEvent(HTTPResponseEvent):
+class HttpItemInfo(HttpInfo):
     data: collections.abc.Mapping
 
     def get_content(self):
@@ -43,7 +31,7 @@ class ItemResponseEvent(HTTPResponseEvent):
 
 
 @dataclasses.dataclass
-class ListResponseEvent(HTTPResponseEvent):
+class HttpListInfo(HttpInfo):
     data: collections.abc.Iterable[collections.abc.Mapping]
 
     def get_content(self):
@@ -53,7 +41,7 @@ class ListResponseEvent(HTTPResponseEvent):
 
 
 @dataclasses.dataclass
-class PaginatedListResponseEvent(ListResponseEvent):
+class HttpPaginatedListInfo(HttpListInfo):
     total: int
 
     def get_content(self):
