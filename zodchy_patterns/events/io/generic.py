@@ -3,7 +3,7 @@ from zodchy import codex
 
 
 @dataclasses.dataclass
-class HttpEvent(codex.ResponseEvent):
+class HttpEvent(codex.cqea.ResponseEvent):
     def get_content(self) -> dict:
         data = dataclasses.asdict(self)
         return {

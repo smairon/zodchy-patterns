@@ -6,7 +6,7 @@ from . import generic
 
 
 @dataclasses.dataclass
-class HttpError(generic.HttpEvent, codex.Error):
+class HttpError(generic.HttpEvent, codex.cqea.Error):
     code: int = 500
     message: str | None = None
     details: dict | None = None
