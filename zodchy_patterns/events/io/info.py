@@ -11,11 +11,11 @@ class HttpInfo(HttpEvent):
 
 @dataclasses.dataclass
 class HttpCreatedInfo(HttpInfo):
-    def get_content(self) -> dict:
+    def get_content(self) -> dict | None:
         data = dataclasses.asdict(self)
         return {'data': data} if data else None
 
-    def get_status_code(self):
+    def get_status_code(self) -> int:
         return 200 if self.get_content() else 201
 
 

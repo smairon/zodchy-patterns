@@ -11,7 +11,7 @@ class DuplexMap(typing.Generic[K, V], typing.Mapping):
     def __init__(self, data: collections.abc.Mapping[K, V]):
         self._data = data
 
-    def __contains__(self, key: K) -> bool:
+    def __contains__(self, key: object) -> bool:
         return key in self._data
 
     def __getitem__(self, key: K) -> V:
@@ -20,7 +20,7 @@ class DuplexMap(typing.Generic[K, V], typing.Mapping):
     def __iter__(self):
         yield from self._data
 
-    def __len__(self) -> K:
+    def __len__(self) -> int:
         return len(self._data)
 
     def get(
@@ -34,3 +34,4 @@ class DuplexMap(typing.Generic[K, V], typing.Mapping):
         for k, v in self._data.items():
             if v == value:
                 return k
+        return None
