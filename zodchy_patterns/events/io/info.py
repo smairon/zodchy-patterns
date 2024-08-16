@@ -46,7 +46,7 @@ class HttpPaginatedListInfo(HttpListInfo):
 
     def get_content(self):
         return super().get_content() | {
-            'pagination': {
+            'meta': {
                 'quantity': self.total
             }
         }
