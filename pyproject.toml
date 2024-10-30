@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "zodchy-patterns"
-version = "0.3.3"
+version = "0.3.4"
 description = "Collection of patterns to use in CQRS applications"
 authors = ["Smairon <man@smairon.ru>"]
 readme = "README.md"
@@ -9,7 +9,7 @@ packages = [{ include = "zodchy_patterns" }]
 
 [tool.poetry.dependencies]
 python = "^3.11"
-zodchy = "^0.4.2"
+zodchy = "^0.5.0"
 
 
 [build-system]
